@@ -75,12 +75,12 @@ public class TrackController {
         return responseEntity;
     }
 
-    @PatchMapping("track")
-    public ResponseEntity<?> updateTrack(@RequestBody int id,@RequestBody String comments){
+    @PutMapping("track")
+    public ResponseEntity<?> updateTrack(@RequestBody int id,@RequestBody Track track){
 
         try{
 
-            responseEntity = new ResponseEntity(trackService.updateTrack(id,comments),HttpStatus.OK);
+            responseEntity = new ResponseEntity(trackService.updateTrack(id,track),HttpStatus.OK);
         }
         catch (Exception e){
             responseEntity = new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);

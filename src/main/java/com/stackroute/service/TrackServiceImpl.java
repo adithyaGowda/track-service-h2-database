@@ -35,8 +35,11 @@ public class TrackServiceImpl implements TrackService {
 
 
     @Override
-    public Track updateTrack(int id, String comment) {
-        return null;
+    public Track updateTrack(int id, Track track) {
+        Track update = trackRepository.findById(id).get();
+        update.setName(track.getName());
+        update.setComments(track.getComments());
+        return trackRepository.save(track);
     }
 
     @Override
